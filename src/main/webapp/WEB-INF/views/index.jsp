@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -42,7 +42,7 @@
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>13</em>
+            <em>${quantityOfBags}</em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -50,7 +50,7 @@
         </div>
 
         <div class="stats--item">
-            <em>5</em>
+            <em>${quantityOfDonations}</em>
             <h3>Przekazanych darów</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
@@ -109,27 +109,21 @@
 
         <ul class="help--slides-items">
             <li>
-                <div class="col">
-                    <div class="title">Fundacja "Dbam o Zdrowie"</div>
-                    <div class="subtitle">Cel i misja: Pomoc dzieciom z ubogich rodzin.</div>
-                </div>
-
-                <div class="col">
-                    <div class="title">Fundacja "A kogo"</div>
-                    <div class="subtitle">Cel i misja: Pomoc wybudzaniu dzieci ze śpiączki.</div>
-                </div>
+                <c:forEach items="${allInstitutions}" begin="0" step="2" var="institution">
+                    <div class="col">
+                        <div class="title">Fundacja "${institution.name}"</div>
+                        <div class="subtitle">Cel i misja: ${institution.description}</div>
+                    </div>
+                </c:forEach>
             </li>
 
             <li>
-                <div class="col">
-                    <div class="title">Fundacja “Dla dzieci"</div>
-                    <div class="subtitle">Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.</div>
-                </div>
-                <div class="col">
-                    <div class="title">Fundacja “Bez domu”</div>
-                    <div class="subtitle">Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania</div>
-                </div>
-
+                <c:forEach items="${allInstitutions}" begin="1" step="2" var="institution">
+                    <div class="col">
+                        <div class="title">Fundacja "${institution.name}"</div>
+                        <div class="subtitle">Cel i misja: ${institution.description}</div>
+                    </div>
+                </c:forEach>
             </li>
 
         </ul>
@@ -153,9 +147,10 @@
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"><img src="images/icon-facebook.svg"/></a> <a href="#"
-                                                                                            class="btn btn--small"><img
-                src="images/icon-instagram.svg"/></a>
+            <a href="#" class="btn btn--small"><img src="<c:url value="resources/images/icon-facebook.svg"/>"/></a> <a
+                href="#"
+                class="btn btn--small">
+            <img src="<c:url value="resources/images/icon-instagram.svg"/>"/></a>
         </div>
     </div>
 </footer>
