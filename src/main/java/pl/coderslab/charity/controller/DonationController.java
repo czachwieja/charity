@@ -9,21 +9,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.repository.CategoryRepository;
+import pl.coderslab.charity.repository.InstitutionRepository;
 
 @Controller
 public class DonationController {
 
     private CategoryRepository categoryRepository;
+    private InstitutionRepository institutionRepository;
 
     @Autowired
-    public DonationController(CategoryRepository categoryRepository) {
+    public DonationController(CategoryRepository categoryRepository, InstitutionRepository institutionRepository) {
         this.categoryRepository = categoryRepository;
+        this.institutionRepository = institutionRepository;
     }
 
     @GetMapping("/form")
     public String giveDonationsForm(Model model) {
         model.addAttribute("allCategories", categoryRepository.findAll());
         model.addAttribute("donation", new Donation());
+        model.addAttribute("allInstitutions", institutionRepository.findAll());
         return "form";
     }
 
