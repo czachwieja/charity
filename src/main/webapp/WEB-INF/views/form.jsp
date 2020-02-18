@@ -113,7 +113,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <form:input type="number" name="bags" value="1" step="1" min="1" path="quantity"/>
+                        <form:input type="number" name="bags" value="1" step="1" min="1" max="10" path="quantity"/>
                     </label>
                 </div>
 
@@ -130,10 +130,10 @@
                 <c:forEach items="${allInstitutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:radiobutton path="institution" value="${institution.id}"></form:radiobutton>
+                            <form:radiobutton path="institution" value="${institution}"></form:radiobutton>
                             <span class="checkbox radio"></span>
                             <span class="description">
-                  <div class="title">Fundacja "${institution.name}"</div>
+                  <div class="title">Fundacja "<span class="institution-name">${institution.name}</span>"</div>
                   <div class="subtitle">Cel i misja: ${institution.description}</div>
                             </span>
                         </label>
@@ -198,7 +198,7 @@
                 </div>
             </div>
 
-            <!-- STEP 6 -->
+            <!-- STEP 5 -->
             <div data-step="5">
                 <h3>Podsumowanie Twojej darowizny</h3>
 
@@ -208,15 +208,16 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                >4 worki ubrań w dobrym stanie dla dzieci</span
-                                >
+                                <span class="summary--text">
+                                    <label id="quantity-summary"></label>
+                                    <label id="bags-summary"></label><label id="categories-summary"></label>
+                                </span>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text"
-                                >Dla fundacji "Mam marzenie" w Warszawie</span
+                                >Dla fundacji "<label id="institution-summary"></label>" w Warszawie</span
                                 >
                             </li>
                         </ul>
@@ -226,19 +227,19 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li>Prosta 51</li>
-                                <li>Warszawa</li>
-                                <li>99-098</li>
-                                <li>123 456 789</li>
+                                <li><label id="street-summary"></label></li>
+                                <li><label id="city-summary"></label></li>
+                                <li><label id="zipCode-summary"></label></li>
+                                <li><label id="phoneNumber-summary"></label></li>
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>13/12/2018</li>
-                                <li>15:40</li>
-                                <li>Brak uwag</li>
+                                <li><label id="pickUpDate-summary"></label></li>
+                                <li><label id="pickUpTime-summary"></label></li>
+                                <li><label id="pickUpComment-summary"></label></li>
                             </ul>
                         </div>
                     </div>
@@ -257,6 +258,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="<c:url value="resources/js/app.js"/>"></script>
+<script src="<c:url value="resources/js/form.js"/>"></script>
 <script src="<c:url value="resources/js/fix.js"/>"></script>
 </body>
 </html>
