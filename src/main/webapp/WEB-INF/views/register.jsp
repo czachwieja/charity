@@ -31,7 +31,13 @@
     <h2>Załóż konto</h2>
     <form class="form--contact">
         <div class="form-group">
-            <input type="email" name="email" placeholder="Email" />
+            <input type="firstName" name="firstName" placeholder="Imię" />
+        </div>
+        <div class="form-group">
+            <input type="lastName" name="lastName" placeholder="Nazwisko" />
+        </div>
+        <div class="form-group">
+            <input type="email" name="email" placeholder="E-mail" />
         </div>
         <div class="form-group">
             <input type="password" name="password" placeholder="Hasło" />
