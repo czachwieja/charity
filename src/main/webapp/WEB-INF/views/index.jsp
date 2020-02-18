@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <a href="<c:url value="/register"/>" class="btn btn--large">Załóż konto</a>
 </section>
 
 <section class="about-us">
